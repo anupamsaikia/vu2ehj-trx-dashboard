@@ -1,10 +1,18 @@
-import CssBaseline from "@mui/material/CssBaseline";
+import { StoreProvider } from "easy-peasy";
 import React from "react";
+import Connect from "./components/Connect";
+import Navbar from "./components/Navbar";
+import { store } from "./store/store";
+
 function App() {
   return (
     <React.Fragment>
-      <CssBaseline />
-      <div>hello world</div>
+      <StoreProvider store={store}>
+        <Navbar></Navbar>
+        <div class="md:container md:mx-auto px-4">
+          <Connect></Connect>
+        </div>
+      </StoreProvider>
     </React.Fragment>
   );
 }
