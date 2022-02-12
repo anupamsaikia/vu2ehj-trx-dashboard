@@ -5,4 +5,9 @@ export const store = createStore({
   setHostnameAndPort: action((state, payload) => {
     state.hostnameAndPort = payload;
   }),
+
+  lastPingTime: new Date(0),
+  setLastPingTime: action((state, payload) => {
+    state.lastPingTime = payload;
+  }),
 });

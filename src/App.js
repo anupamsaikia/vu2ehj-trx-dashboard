@@ -11,6 +11,10 @@ function App() {
         <Navbar></Navbar>
         <div class="md:container md:mx-auto px-4">
           <Connect></Connect>
+
+          <div class="divider"></div>
+
+          <div>hdhkj</div>
         </div>
       </StoreProvider>
     </React.Fragment>

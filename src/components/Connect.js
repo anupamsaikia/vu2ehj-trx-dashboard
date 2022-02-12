@@ -1,4 +1,5 @@
 import axios from "axios";
+import { formatDistanceToNow } from "date-fns";
 import { useStoreActions, useStoreState } from "easy-peasy";
 import { useState } from "react";
 
@@ -8,10 +9,15 @@ export default function Connect() {
     (actions) => actions.setHostnameAndPort
   );
 
+  const lastPingTime = useStoreState((state) => state.lastPingTime);
+  const setLastPingTime = useStoreActions((actions) => actions.setLastPingTime);
+
   const [loading, setLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState(null);
 
   const handleClick = () => {
     setLoading(true);
+    setErrorMessage(null);
     axios({
       method: "get",
       url: "ping",
@@ -21,9 +27,11 @@ export default function Connect() {
       .then((data) => {
         console.log(data);
         // save to local storage
+        setLastPingTime(new Date());
       })
       .catch((err) => {
         console.error(err);
+        setErrorMessage("Error occurred while connecting");
       })
       .finally(() => {
         setLoading(false);
@@ -31,15 +39,12 @@ export default function Connect() {
   };
 
   return (
-    <div>
+    <div class="max-w-md mx-auto">
       <div class="form-control">
-        <label class="label">
-          <span class="label-text">Enter hostname and port of radio</span>
-        </label>
         <div class="relative">
           <input
             type="text"
-            placeholder="e.g 192.168.1.1:2237"
+            placeholder="Enter host and port e.g 192.168.1.1:2237"
             class="w-full pr-16 input input-sm input-primary input-bordered"
             value={hostnameAndPort}
             onChange={(e) => setHostnameAndPort(e.target.value)}
@@ -61,7 +66,7 @@ export default function Connect() {
                   cy="12"
                   r="10"
                   stroke="currentColor"
-                  stroke-width="4"
+                  strokeWidth="4"
                 ></circle>
                 <path
                   class="opacity-75"
@@ -76,7 +81,15 @@ export default function Connect() {
         </div>
       </div>
 
-      <p class="mt-2"></p>
+      <p class="mt-2 text-sm text-center">
+        {errorMessage !== null
+          ? `${errorMessage}`
+          : lastPingTime.getTime() !== new Date(0).getTime()
+          ? `Last ping reply was ${formatDistanceToNow(lastPingTime, {
+              addSuffix: true,
+            })}`
+          : ""}
+      </p>
     </div>
   );
 }
