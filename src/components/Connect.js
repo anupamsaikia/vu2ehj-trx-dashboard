@@ -40,6 +40,16 @@ export default function Connect() {
 
   return (
     <div class="max-w-md mx-auto mt-4">
+      <p class="mt-1 mb-1 text-sm text-center">
+        {errorMessage !== null
+          ? `${errorMessage}`
+          : lastPingTime.getTime() !== new Date(0).getTime()
+          ? `Last ping reply was ${formatDistanceToNow(lastPingTime, {
+              addSuffix: true,
+            })}`
+          : ""}
+      </p>
+
       <div class="form-control">
         <div class="relative">
           <input
@@ -59,16 +69,6 @@ export default function Connect() {
           </button>
         </div>
       </div>
-
-      <p class="mt-2 text-sm text-center">
-        {errorMessage !== null
-          ? `${errorMessage}`
-          : lastPingTime.getTime() !== new Date(0).getTime()
-          ? `Last ping reply was ${formatDistanceToNow(lastPingTime, {
-              addSuffix: true,
-            })}`
-          : ""}
-      </p>
     </div>
   );
 }
