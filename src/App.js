@@ -1,6 +1,7 @@
 import { StoreProvider } from "easy-peasy";
 import React from "react";
 import Connect from "./components/Connect";
+import FrequencyInput from "./components/FrequencyInput";
 import Navbar from "./components/Navbar";
 import { store } from "./store/store";
 
@@ -14,7 +15,7 @@ function App() {
 
           <div class="divider"></div>
 
-          <div>hdhkj</div>
+          <FrequencyInput></FrequencyInput>
         </div>
       </StoreProvider>
     </React.Fragment>

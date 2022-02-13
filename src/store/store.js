@@ -10,4 +10,9 @@ export const store = createStore({
   setLastPingTime: action((state, payload) => {
     state.lastPingTime = payload;
   }),
+
+  frequency: "",
+  setFrequency: action((state, payload) => {
+    state.frequency = payload;
+  }),
 });
