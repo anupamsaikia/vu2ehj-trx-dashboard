@@ -4,9 +4,9 @@ import { useStoreActions, useStoreState } from "easy-peasy";
 import { useState } from "react";
 
 export default function Connect() {
-  const hostnameAndPort = useStoreState((state) => state.hostnameAndPort);
-  const setHostnameAndPort = useStoreActions(
-    (actions) => actions.setHostnameAndPort
+  const hostNameAndPort = useStoreState((state) => state.hostNameAndPort);
+  const setHostNameAndPort = useStoreActions(
+    (actions) => actions.setHostNameAndPort
   );
 
   const lastPingTime = useStoreState((state) => state.lastPingTime);
@@ -21,7 +21,7 @@ export default function Connect() {
     axios({
       method: "get",
       url: "ping",
-      baseURL: `http://${hostnameAndPort}`,
+      baseURL: `http://${hostNameAndPort}`,
     })
       .then((res) => res.data())
       .then((data) => {
@@ -46,8 +46,8 @@ export default function Connect() {
             type="text"
             placeholder="Enter host and port e.g 192.168.1.1:2237"
             class="w-full pr-16 input input-sm input-primary input-bordered"
-            value={hostnameAndPort}
-            onChange={(e) => setHostnameAndPort(e.target.value)}
+            value={hostNameAndPort}
+            onChange={(e) => setHostNameAndPort(e.target.value)}
           ></input>
           <button
             class="absolute top-0 right-0 rounded-l-none btn btn-sm btn-primary"
