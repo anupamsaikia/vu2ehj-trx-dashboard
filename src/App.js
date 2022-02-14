@@ -5,8 +5,13 @@ import FrequencyInput from "./components/FrequencyInput";
 import ModeSelect from "./components/ModeSelect";
 import Navbar from "./components/Navbar";
 import { store } from "./store/store";
+import { useEffect } from "react";
+import { themeChange } from "theme-change";
 
 function App() {
+  useEffect(() => {
+    themeChange(false);
+  }, []);
   return (
     <React.Fragment>
       <StoreProvider store={store}>

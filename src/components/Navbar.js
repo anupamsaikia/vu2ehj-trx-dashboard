@@ -1,13 +1,4 @@
-import React from "react";
-import { useEffect } from "react";
-import { themeChange } from "theme-change";
-
 export default function Navbar() {
-  useEffect(() => {
-    themeChange(false);
-    // 👆 false parameter is required for react project
-  }, []);
-
   return (
     <div class="navbar mb-2 shadow-lg bg-neutral text-neutral-content">
       <div class="flex-1 px-2 mx-2">
@@ -18,8 +9,9 @@ export default function Navbar() {
         <div class="flex items-stretch">
           <select
             data-choose-theme
-            class="select select-bordered select-primary select-sm w-full max-w-xs"
+            class="bg-base-200 text-base-content select select-bordered select-primary select-sm w-full max-w-xs"
           >
+            <option value="">Default</option>
             <option value="light">light</option>
             <option value="dark">dark</option>
             <option value="cupcake">cupcake</option>
