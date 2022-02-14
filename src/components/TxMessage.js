@@ -10,10 +10,10 @@ export default function TxMessage() {
   const [enableTxLoading, setEnableTxLoading] = useState(false);
   const [disableTxLoading, setDisableTxLoading] = useState(false);
 
-  const [message, setMessage] = useState(null);
+  const setMessage = useStoreActions((actions) => actions.setMessage);
   const hostNameAndPort = useStoreState((state) => state.hostNameAndPort);
   const handleClick = () => {
-    setMessage(null);
+    setMessage("");
     axios({
       method: "get",
       url: "ping",
@@ -33,8 +33,6 @@ export default function TxMessage() {
 
   return (
     <div>
-      {message && <p class="mb-1 text-sm text-center">{message}</p>}
-
       <div class="form-control">
         <label class="label">
           <span class="label-text">Tx Message</span>

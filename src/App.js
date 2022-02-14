@@ -8,6 +8,7 @@ import { store } from "./store/store";
 import { useEffect } from "react";
 import { themeChange } from "theme-change";
 import TxMessage from "./components/TxMessage";
+import Status from "./components/Status";
 
 function App() {
   useEffect(() => {
@@ -20,6 +21,8 @@ function App() {
         <div class="md:container md:mx-auto px-4">
           <Connect></Connect>
 
+          <Status></Status>
+
           <div class="divider"></div>
 
           <FrequencyInput></FrequencyInput>
@@ -31,6 +34,8 @@ function App() {
           <div class="divider"></div>
 
           <TxMessage></TxMessage>
+
+          <div className="mt-10"></div>
         </div>
       </StoreProvider>
     </React.Fragment>

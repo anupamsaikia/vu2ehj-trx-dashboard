@@ -15,11 +15,11 @@ export default function FrequencyInput() {
   });
 
   const [loading, setLoading] = useState(false);
-  const [message, setMessage] = useState(null);
+  const setMessage = useStoreActions((actions) => actions.setMessage);
   const hostNameAndPort = useStoreState((state) => state.hostNameAndPort);
   const handleClick = () => {
     setLoading(true);
-    setMessage(null);
+    setMessage("");
     axios({
       method: "get",
       url: "ping",
@@ -41,8 +41,6 @@ export default function FrequencyInput() {
 
   return (
     <div className="mx-auto max-w-md">
-      {message && <p class="mb-1 text-sm text-center">{message}</p>}
-
       <div className="grid grid-cols-8 gap-1 border border-primary rounded-xl p-2 items-center">
         <input
           className="input input-bordered input-md text-center p-0 font-semibold text-lg"

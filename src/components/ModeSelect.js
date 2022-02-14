@@ -18,11 +18,11 @@ export default function ModeSelect() {
   const setSelectedMode = useStoreActions((actions) => actions.setSelectedMode);
 
   const [loading, setLoading] = useState(false);
-  const [message, setMessage] = useState(null);
+  const setMessage = useStoreActions((actions) => actions.setMessage);
   const hostNameAndPort = useStoreState((state) => state.hostNameAndPort);
   const handleClick = () => {
     setLoading(true);
-    setMessage(null);
+    setMessage("");
     axios({
       method: "get",
       url: "ping",
@@ -44,8 +44,6 @@ export default function ModeSelect() {
 
   return (
     <div className="">
-      {message && <p class="mb-1 text-sm text-center">{message}</p>}
-
       <div class="grid grid-cols-4 xl:grid-cols-8 gap-1">
         {modes.map((mode) => (
           <button

@@ -13,11 +13,11 @@ export default function Connect() {
   const setLastPingTime = useStoreActions((actions) => actions.setLastPingTime);
 
   const [loading, setLoading] = useState(false);
-  const [errorMessage, setErrorMessage] = useState(null);
+  const setMessage = useStoreActions((actions) => actions.setMessage);
 
   const handleClick = () => {
     setLoading(true);
-    setErrorMessage(null);
+    setMessage("");
     axios({
       method: "get",
       url: "ping",
@@ -31,7 +31,7 @@ export default function Connect() {
       })
       .catch((err) => {
         console.error(err);
-        setErrorMessage("Error occurred while connecting");
+        setMessage("Error occurred while connecting");
       })
       .finally(() => {
         setLoading(false);
@@ -41,9 +41,7 @@ export default function Connect() {
   return (
     <div class="max-w-md mx-auto mt-4">
       <p class="mt-1 mb-1 text-sm text-center">
-        {errorMessage !== null
-          ? `${errorMessage}`
-          : lastPingTime.getTime() !== new Date(0).getTime()
+        {lastPingTime.getTime() !== new Date(0).getTime()
           ? `Last ping reply was ${formatDistanceToNow(lastPingTime, {
               addSuffix: true,
             })}`
