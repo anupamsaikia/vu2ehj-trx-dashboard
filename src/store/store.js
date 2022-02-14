@@ -15,4 +15,9 @@ export const store = createStore({
   setFrequency: action((state, payload) => {
     state.frequency = payload;
   }),
+
+  selectedMode: "CW",
+  setSelectedMode: action((state, payload) => {
+    state.selectedMode = payload;
+  }),
 });
