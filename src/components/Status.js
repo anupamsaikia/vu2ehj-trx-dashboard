@@ -7,7 +7,7 @@ export default function Status() {
   const setMessage = useStoreActions((actions) => actions.setMessage);
 
   return (
-    <div className="border rounded-lg mt-2">
+    <div className="border border-primary rounded-lg mt-2">
       <p className="text-center text-primary font-mono text-sm font-semibold p-1">
         Device status:{" "}
       </p>
