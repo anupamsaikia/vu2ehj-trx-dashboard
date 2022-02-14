@@ -7,6 +7,7 @@ import Navbar from "./components/Navbar";
 import { store } from "./store/store";
 import { useEffect } from "react";
 import { themeChange } from "theme-change";
+import TxMessage from "./components/TxMessage";
 
 function App() {
   useEffect(() => {
@@ -26,6 +27,10 @@ function App() {
           <div class="divider"></div>
 
           <ModeSelect></ModeSelect>
+
+          <div class="divider"></div>
+
+          <TxMessage></TxMessage>
         </div>
       </StoreProvider>
     </React.Fragment>
