@@ -9,6 +9,10 @@ export default function Connect() {
     (actions) => actions.setHostNameAndPort
   );
 
+  const parseAndSetESPData = useStoreActions(
+    (actions) => actions.parseAndSetESPData
+  );
+
   const lastPingTime = useStoreState((state) => state.lastPingTime);
   const setLastPingTime = useStoreActions((actions) => actions.setLastPingTime);
 
@@ -23,10 +27,9 @@ export default function Connect() {
       url: "ping",
       baseURL: `http://${hostNameAndPort}`,
     })
-      .then((res) => res.data())
+      .then((res) => res.data)
       .then((data) => {
-        console.log(data);
-        // save to local storage
+        parseAndSetESPData(data);
         setLastPingTime(new Date());
       })
       .catch((err) => {
