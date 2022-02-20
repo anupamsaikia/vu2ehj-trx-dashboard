@@ -62,6 +62,8 @@ export const store = createStore({
     state.deviceMyGrid = myGrid;
     state.deviceCal = cal;
     state.deviceWPM = wpm;
+
     state.message = message;
+    state.selectedMode = opMode;
   }),
 });

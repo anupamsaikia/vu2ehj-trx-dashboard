@@ -1,17 +1,7 @@
 import { useStoreActions, useStoreState } from "easy-peasy";
 import React, { useState } from "react";
 import axios from "axios";
-
-const modes = [
-  "CW",
-  "FSQ_2",
-  "FSQ_3",
-  "FSQ_4_5",
-  "FSQ_6",
-  "RTTY",
-  "WSPR",
-  "FT8",
-];
+import { operatingModes } from "../Data/operatingModes";
 
 export default function ModeSelect() {
   const selectedMode = useStoreState((state) => state.selectedMode);
@@ -19,19 +9,27 @@ export default function ModeSelect() {
 
   const [loading, setLoading] = useState(false);
   const setMessage = useStoreActions((actions) => actions.setMessage);
+  const parseAndSetESPData = useStoreActions(
+    (actions) => actions.parseAndSetESPData
+  );
+
   const hostNameAndPort = useStoreState((state) => state.hostNameAndPort);
   const handleClick = () => {
     setLoading(true);
     setMessage("");
     axios({
       method: "get",
-      url: "ping",
+      url: "set",
       baseURL: `http://${hostNameAndPort}`,
+      params: {
+        key: "opMode",
+        value: operatingModes.indexOf(selectedMode),
+      },
     })
       .then((res) => res.data)
       .then((data) => {
         console.log(data);
-        setMessage("Successfully set mode to ");
+        parseAndSetESPData(data);
       })
       .catch((err) => {
         console.error(err);
@@ -45,10 +43,10 @@ export default function ModeSelect() {
   return (
     <div className="">
       <div class="grid grid-cols-4 xl:grid-cols-8 gap-1">
-        {modes.map((mode) => (
+        {operatingModes.map((mode) => (
           <button
             onClick={() => setSelectedMode(mode)}
-            id={mode}
+            key={mode}
             class={`btn btn-sm ${selectedMode === mode ? "btn-accent" : ""}`}
           >
             {mode}
