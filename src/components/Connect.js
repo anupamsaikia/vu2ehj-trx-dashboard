@@ -47,6 +47,7 @@ export default function Connect() {
         {lastPingTime.getTime() !== new Date(0).getTime()
           ? `Last ping reply was ${formatDistanceToNow(lastPingTime, {
               addSuffix: true,
+              includeSeconds: true,
             })}`
           : ""}
       </p>
