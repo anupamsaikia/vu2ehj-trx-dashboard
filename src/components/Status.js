@@ -17,9 +17,9 @@ export default function Status() {
   return (
     <div className="border border-primary rounded-lg mt-2">
       <p className="text-center text-primary font-mono text-sm font-semibold p-1">
-        Device status:{" "}
+        Device status
       </p>
-      <div className="p-2 text-xs font-mono grid sm:grid-cols-4 xs:grid-cols-1">
+      <div className="px-2 text-xs font-mono grid sm:grid-cols-4 xs:grid-cols-1">
         <p>
           <span className="text-primary">Mode: </span>
           <span className="">
@@ -53,13 +53,13 @@ export default function Status() {
           <span className="">
             {deviceMyCall ? deviceMyCall : "Unavailable"}
           </span>
-        </p>{" "}
+        </p>
         <p>
           <span className="text-primary">My grid: </span>
           <span className="">
             {deviceMyGrid ? deviceMyGrid : "Unavailable"}
           </span>
-        </p>{" "}
+        </p>
         <p>
           <span className="text-primary">Dx call: </span>
           <span className="">
@@ -68,11 +68,11 @@ export default function Status() {
         </p>
       </div>
 
-      <p class="px-2 py-1 text-xs font-mono">
+      <p class="px-2 text-xs font-mono">
         <span className="text-primary">Tx Msg: </span>
         <span className="">{deviceTxMsg ? deviceTxMsg : ""}</span>
       </p>
-      <p class="px-2 py-1 text-xs font-mono">
+      <p class="px-2 mb-1 text-xs font-mono">
         <span className="text-primary">Status: </span>
         <span className="">{message ? `${message}` : "Clear"}</span>
       </p>
