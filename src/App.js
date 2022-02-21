@@ -7,8 +7,8 @@ import Navbar from "./components/Navbar";
 import { store } from "./store/store";
 import { useEffect } from "react";
 import { themeChange } from "theme-change";
-import TxMessage from "./components/TxMessage";
 import Status from "./components/Status";
+import ShowModeOptions from "./components/ShowModeOptions";
 
 function App() {
   useEffect(() => {
@@ -33,7 +33,7 @@ function App() {
 
           <div class="divider"></div>
 
-          <TxMessage></TxMessage>
+          <ShowModeOptions />
 
           <div className="mt-10"></div>
         </div>

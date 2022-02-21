@@ -33,7 +33,7 @@ export const store = createStore({
   deviceTxEn: false,
   deviceMyGrid: "",
   deviceCal: null,
-  deviceWPM: null,
+  deviceWPM: "",
   parseAndSetESPData: action((state, payload) => {
     const freq = get(payload, "freq", 702300000);
     const opMode = operatingModes.at(get(payload, "opMode", 0));
