@@ -9,6 +9,7 @@ export default function TxMessageCW() {
   const setMessage = useStoreActions((actions) => actions.setMessage);
   const hostNameAndPort = useStoreState((state) => state.hostNameAndPort);
   const deviceWPM = useStoreState((state) => state.deviceWPM);
+  const deviceOpMode = useStoreState((state) => state.deviceOpMode);
   const [localWPM, setLocalWPM] = useState("");
   const parseAndSetESPData = useStoreActions(
     (actions) => actions.parseAndSetESPData
@@ -45,6 +46,10 @@ export default function TxMessageCW() {
 
   const [localTxMessage, setLocalTxMessage] = useState("");
   const handleSendMsgClick = () => {
+    if (!deviceOpMode.includes("CW")) {
+      setMessage("Set the mode to CW before sending message");
+      return;
+    }
     setSendMsgLoading(true);
     setMessage("");
     axios({
