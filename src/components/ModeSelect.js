@@ -28,7 +28,6 @@ export default function ModeSelect() {
     })
       .then((res) => res.data)
       .then((data) => {
-        console.log(data);
         parseAndSetESPData(data);
       })
       .catch((err) => {

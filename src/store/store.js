@@ -18,18 +18,13 @@ export const store = createStore({
     state.lastPingTime = payload;
   }),
 
-  frequency: "",
-  setFrequency: action((state, payload) => {
-    state.frequency = payload;
-  }),
-
   selectedMode: "CW",
   setSelectedMode: action((state, payload) => {
     state.selectedMode = payload;
   }),
 
   // ESP response data
-  deviceFreq: null,
+  deviceFreq: 0,
   deviceOpMode: "",
   deviceTxMsg: "",
   deviceMyCall: "",
