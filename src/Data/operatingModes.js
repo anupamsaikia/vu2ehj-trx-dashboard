@@ -3,6 +3,7 @@ export const operatingModes = [
   "PIXIE_CW",
   "WSPR",
   "FT8",
+  "FT4",
   "FSQ_2",
   "FSQ_3",
   "FSQ_4_5",
